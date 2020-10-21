@@ -66,24 +66,13 @@ class App extends React.Component {
   changeFilters = (changePlayers) => {
     const {nationality,club,team_position}=changePlayers;
     let update=[...Players];
-    //1
-    if(nationality.length){
-      update=update.filter(player=>{
-        return nationality.some(item=>player.nationality===item)
-      })
-    }
-    //2
-    if(club.length){
-      update=update.filter(player=>{
-        return club.some(item=>player.club===item)
-      })
-    }
-    //3
-    if(team_position.length){
-      update=update.filter(player=>{
-        return team_position.some(item=>player.team_position===item)
-      })
-    }
+    Object.keys(changePlayers).map(key=> {
+      if(changePlayers[key].length){
+            update=update.filter(player=>{
+              return changePlayers[key].some(item=>player[key]===item)
+          })
+        }
+    })
     //final
       this.setState({ ...this.state, players: update ,changePlayers:update});
   };
