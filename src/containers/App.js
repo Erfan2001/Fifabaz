@@ -64,7 +64,6 @@ class App extends React.Component {
     this.setState({ ...this.state, players: a });
   };
   changeFilters = (changePlayers) => {
-    const {nationality,club,team_position}=changePlayers;
     let update=[...Players];
     Object.keys(changePlayers).map(key=> {
       if(changePlayers[key].length){
@@ -73,7 +72,6 @@ class App extends React.Component {
           })
         }
     })
-    //final
       this.setState({ ...this.state, players: update ,changePlayers:update});
   };
   renderTable = () => {
